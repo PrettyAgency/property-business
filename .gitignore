@@ -27,3 +27,6 @@ desktop.ini
 # One-off scripts that pulled assets from the old live site (kept locally only)
 download-assets.ps1
 download-assets.sh
+
+# IIS (Windows hosting) config - not used, kept locally only
+web.config
