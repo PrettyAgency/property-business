@@ -245,3 +245,30 @@ $(document).ready(function(e) {
     }
   });
 })();
+
+// ======= Scroll-to-top button (every page) ===============================
+(function () {
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'to-top-fab';
+  btn.setAttribute('aria-label', 'Scroll to top');
+  btn.innerHTML = '<svg class="ring" viewBox="0 0 58 58" aria-hidden="true"><circle cx="29" cy="29" r="27"/></svg>' +
+                  '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+  document.body.appendChild(btn);
+  var ring = btn.querySelector('.ring circle');
+  var len = 2 * Math.PI * 27;
+  ring.style.strokeDasharray = len;
+  function update() {
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    btn.classList.toggle('is-visible', y > 400);
+    ring.style.strokeDashoffset = len * (1 - (max > 0 ? Math.min(y / max, 1) : 0));   // red ring shows reading progress
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+  btn.addEventListener('click', function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
+})();
