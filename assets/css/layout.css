@@ -1809,3 +1809,26 @@ body.sx-open { overflow: hidden; }
 .sx-foot .sx-count { margin-left: auto; }
 .sx-foot kbd { margin-right: 4px; }
 .sx-foot > span { display: inline-flex; align-items: center; }
+
+/* ---- Search modal: round X close button on the far right ---- */
+.sx-bar { padding: 0 12px 0 20px; }
+.sx .sx-input { flex: 1 1 auto; width: 100%; }
+.sx .sx-close,
+.sx .sx-close:hover,
+.sx .sx-close:focus {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #f4f1ed;
+  color: var(--pb-ink);
+  transition: background-color .2s ease, color .2s ease, transform .25s ease;
+}
+.sx .sx-close:hover,
+.sx .sx-close:focus-visible { background: var(--pb-ink); color: #fff; transform: rotate(90deg); }
+.sx .sx-close svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }

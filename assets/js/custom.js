@@ -357,7 +357,7 @@ $(document).ready(function(e) {
     '<div class="sx-panel" role="dialog" aria-modal="true" aria-label="Search the site">' +
       '<div class="sx-bar">' + svg('<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>') +
         '<input aria-autocomplete="list" aria-controls="sx-results" aria-label="Search pages, articles and resources" autocomplete="off" class="sx-input" placeholder="Search pages, articles and resources…" role="combobox" spellcheck="false" type="search"/>' +
-        '<button aria-label="Close search" class="sx-close" data-sx-close type="button">Esc</button>' +
+        '<button aria-label="Close search" class="sx-close" data-sx-close type="button"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>' +
       '</div>' +
       '<div class="sx-body" id="sx-results" role="listbox"></div>' +
       '<div class="sx-foot"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span><span class="sx-count"></span></div>' +
