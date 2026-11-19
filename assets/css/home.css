@@ -919,3 +919,24 @@
     background: radial-gradient(closest-side, rgba(10,11,14,.66) 0%, rgba(10,11,14,.45) 45%, rgba(10,11,14,.15) 80%, rgba(10,11,14,0) 100%);
   }
 }
+
+/* ---- Hero overlay v3: one smooth fade across the full slide ----
+   Dark behind the text on the left, fading to fully clear on the right. */
+.page-home .slider-caption::before { content: none !important; }
+.page-home .slider li::before {
+  background: linear-gradient(90deg,
+    rgba(10,11,14,.72) 0%,
+    rgba(10,11,14,.62) 22%,
+    rgba(10,11,14,.42) 40%,
+    rgba(10,11,14,.18) 56%,
+    rgba(10,11,14,.05) 68%,
+    rgba(10,11,14,0) 78%) !important;
+}
+/* Phones/tablets: text sits centred, so fade from the bottom and middle instead */
+@media (max-width: 979px) {
+  .page-home .slider li::before {
+    background:
+      linear-gradient(0deg, rgba(10,11,14,.55) 0%, rgba(10,11,14,.25) 45%, rgba(10,11,14,.1) 100%),
+      linear-gradient(90deg, rgba(10,11,14,.35) 0%, rgba(10,11,14,.1) 100%) !important;
+  }
+}
