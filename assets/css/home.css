@@ -907,3 +907,15 @@
   width: 100% !important;
   float: none !important;
 }
+
+/* ---- Hero text glow v2: sized to its own box so it fades out before every edge ---- */
+.page-home .slider-caption::before {
+  inset: -140px -220px -140px -240px;
+  background: radial-gradient(closest-side, rgba(10,11,14,.62) 0%, rgba(10,11,14,.48) 35%, rgba(10,11,14,.24) 65%, rgba(10,11,14,.08) 85%, rgba(10,11,14,0) 100%);
+}
+@media (max-width: 979px) {
+  .page-home .slider-caption::before {
+    inset: -110px -40px;
+    background: radial-gradient(closest-side, rgba(10,11,14,.66) 0%, rgba(10,11,14,.45) 45%, rgba(10,11,14,.15) 80%, rgba(10,11,14,0) 100%);
+  }
+}
