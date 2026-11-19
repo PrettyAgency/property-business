@@ -1,0 +1,228 @@
+/* contact.css - contact page: details left, form right */
+
+.contact-page {
+  position: relative;
+  clear: both;
+  overflow: hidden;
+  padding: 90px 0 110px;
+  background: linear-gradient(180deg, #faf8f5 0%, #fff 100%);
+}
+.contact-page::before {   /* soft red glow behind the form */
+  content: "";
+  position: absolute;
+  top: 40px; right: -200px;
+  width: 640px; height: 640px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,36,44,.10) 0%, rgba(196,36,44,0) 70%);
+  pointer-events: none;
+}
+
+.contact-page .cp-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  gap: 64px;
+  align-items: start;
+  padding: 0 15px;
+}
+
+/* ---------- Left: details ---------- */
+.contact-page .cp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--pb-red);
+}
+.contact-page .cp-eyebrow::before { content: ""; width: 26px; height: 2px; background: currentColor; }
+
+.contact-page .cp-info h2 {
+  margin: 0 0 16px;
+  font-size: clamp(30px, 3.4vw, 44px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -.015em;
+  color: var(--pb-ink);
+}
+.contact-page .cp-lead { margin: 0 0 34px; max-width: 520px; font-size: 17px; line-height: 1.7; color: var(--pb-muted); }
+
+.contact-page .cp-cards { display: grid; gap: 12px; margin: 0 0 24px; padding: 0; list-style: none; }
+.contact-page .cp-cards li { margin: 0; }
+.contact-page .cp-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px 16px 16px;
+  background: #fff;
+  border: 1px solid #eeeae5;
+  border-radius: 16px;
+  color: var(--pb-ink);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.contact-page .cp-card:hover {
+  transform: translateX(4px);
+  border-color: transparent;
+  box-shadow: 0 16px 36px rgba(20,22,28,.09);
+  color: var(--pb-ink);
+}
+.contact-page .cp-ico {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 50px; height: 50px;
+  border-radius: 14px;
+  background: rgba(196,36,44,.08);
+  color: var(--pb-red);
+  transition: background-color .3s ease, color .3s ease;
+}
+.contact-page .cp-ico svg { width: 22px; height: 22px; fill: currentColor; }
+.contact-page .cp-card:hover .cp-ico { background: var(--pb-red); color: #fff; }
+.contact-page .cp-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.contact-page .cp-text small { font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #9a9ca3; }
+.contact-page .cp-text strong { font-size: 16px; font-weight: 700; color: var(--pb-ink); overflow-wrap: anywhere; }
+.contact-page .cp-go { flex: none; color: #c9c4bd; font-size: 18px; transition: color .3s ease, transform .3s ease; }
+.contact-page .cp-card:hover .cp-go { color: var(--pb-red); transform: translateX(3px); }
+
+.contact-page .cp-map {
+  overflow: hidden;
+  height: 240px;
+  border-radius: 16px;
+  border: 1px solid #eeeae5;
+  background: #eee;
+}
+.contact-page .cp-map iframe { display: block; width: 100%; height: 100%; border: 0; filter: grayscale(.35) contrast(1.05); }
+
+/* ---------- Right: form ---------- */
+.contact-page .cp-form { position: sticky; top: calc(var(--pb-nav-h) + 24px); }
+.contact-page .cp-form-card {
+  position: relative;
+  overflow: hidden;
+  padding: 36px 32px 24px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 1px 2px rgba(20,22,28,.04), 0 30px 70px rgba(20,22,28,.10);
+}
+.contact-page .cp-form-card::before {   /* red accent strip across the top */
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--pb-red), #e8545b);
+}
+.contact-page .cp-form-head { margin-bottom: 8px; padding: 0 8px; }
+.contact-page .cp-form-head h3 { margin: 0 0 6px; font-size: 24px; font-weight: 700; color: var(--pb-ink); text-transform: none; }
+.contact-page .cp-form-head p { margin: 0; font-size: 15px; color: var(--pb-muted); }
+
+.contact-page .cntct-dtls { width: 100%; float: none; padding: 0; margin: 0; }
+.contact-page .jotform-embed { border-radius: 12px; }
+.contact-page .jotform-embed iframe { min-height: 520px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1023px) {
+  .contact-page { padding: 70px 0 90px; }
+  .contact-page .cp-grid { grid-template-columns: 1fr; gap: 48px; }
+  .contact-page .cp-form { position: static; }
+  .contact-page .cp-lead { max-width: none; }
+}
+@media (max-width: 641px) {
+  .contact-page { padding: 48px 0 64px; }
+  .contact-page .cp-form-card { padding: 28px 14px 16px; border-radius: 18px; }
+  .contact-page .cp-form-head { padding: 0 10px; }
+  .contact-page .cp-card { padding: 14px 16px 14px 14px; gap: 14px; }
+  .contact-page .cp-ico { width: 44px; height: 44px; border-radius: 12px; }
+  .contact-page .cp-text strong { font-size: 15px; }
+  .contact-page .cp-map { height: 200px; }
+}
+
+/* Home-page version: a little tighter, white background so it separates from the testimonials */
+.contact-page.cp-home { padding: 100px 0 110px; background: #fff; }
+.contact-page.cp-home .cp-cards { margin-bottom: 0; }
+@media (max-width: 1023px) { .contact-page.cp-home { padding: 72px 0 84px; } }
+@media (max-width: 641px)  { .contact-page.cp-home { padding: 56px 0 64px; } }
+
+/* ================= Compact native form (submits to JotForm) ================= */
+.contact-page .cp-form-card { padding: 30px 30px 30px; }
+.contact-page .cp-form-head { margin-bottom: 18px; padding: 0; }
+.contact-page .cp-form-head h3 { font-size: 22px; margin-bottom: 4px; }
+.contact-page .cp-form-head p { font-size: 14px; }
+
+.cp-jf { display: grid; gap: 10px; margin: 0; }
+.cp-jf .cp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cp-jf .cp-field { display: block; margin: 0; }
+.cp-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.cp-jf input,
+.cp-jf select,
+.cp-jf textarea {
+  display: block;
+  width: 100%;
+  height: 46px;
+  margin: 0;
+  padding: 0 14px;
+  border: 1px solid #e4e0da;
+  border-radius: 10px;
+  background: #faf9f7;
+  box-shadow: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  color: var(--pb-ink);
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.cp-jf textarea { height: auto; min-height: 84px; padding: 12px 14px; line-height: 1.5; resize: vertical; }
+.cp-jf ::placeholder { color: #9a9ca3; opacity: 1; }
+.cp-jf input:focus,
+.cp-jf select:focus,
+.cp-jf textarea:focus {
+  outline: none;
+  border-color: var(--pb-red);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(196,36,44,.12);
+}
+.cp-jf select {
+  padding-right: 40px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%23C4242C' stroke-width='2' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+.cp-jf select:invalid { color: #9a9ca3; }
+.cp-jf select option { color: var(--pb-ink); }
+
+.cp-jf .cp-submit,
+.cp-jf .cp-submit:hover,
+.cp-jf .cp-submit:focus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 50px;
+  margin: 6px 0 0;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--pb-red);
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  box-shadow: 0 10px 24px rgba(196,36,44,.28);
+  cursor: pointer;
+  transition: background-color .25s ease, transform .25s ease;
+}
+.cp-jf .cp-submit:hover { background: var(--pb-red-dark); transform: translateY(-1px); }
+.cp-jf .cp-submit span { transition: transform .25s ease; }
+.cp-jf .cp-submit:hover span { transform: translateX(3px); }
+.cp-jf .cp-submit.is-sending { opacity: .75; cursor: wait; }
+
+@media (max-width: 480px) {
+  .contact-page .cp-form-card { padding: 24px 18px; }
+  .cp-jf .cp-row { grid-template-columns: 1fr; }
+}
