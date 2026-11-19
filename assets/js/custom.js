@@ -63,7 +63,7 @@ $(document).ready(function(e) {
   $('.testimonal').slick({
     dots: false,
     arrows: true,
-    appendArrows: $('.t-arrows').length ? $('.t-arrows') : $('.testimonal'),
+    appendArrows: $('.testimonials .t-arrows').length ? $('.testimonials .t-arrows') : $('.testimonal'),
     prevArrow: '<button type="button" class="t-arrow t-prev" aria-label="Previous testimonial"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>',
     nextArrow: '<button type="button" class="t-arrow t-next" aria-label="Next testimonial"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>',
     speed: 700,
