@@ -23,3 +23,7 @@ desktop.ini
 .netlify/
 .vercel/
 .wrangler/
+
+# One-off scripts that pulled assets from the old live site (kept locally only)
+download-assets.ps1
+download-assets.sh
