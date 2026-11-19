@@ -1798,3 +1798,14 @@ body.sx-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .sx-backdrop, .sx-panel { transition: none; }
 }
+
+/* ---- Search modal fix: theme's *{margin:0 auto} centred everything inside it ---- */
+.sx *, .sx *::before, .sx *::after { margin: 0; }
+.sx-panel { margin: 0 auto; text-align: left; }
+.sx-bar, .sx-body, .sx-foot, .sx-group, .sx-label, .sx-item { width: 100%; }
+.sx-txt { text-align: left; align-items: flex-start; }
+.sx-txt strong, .sx-txt small { display: block; max-width: 100%; }
+.sx-label { justify-content: flex-start; }
+.sx-foot .sx-count { margin-left: auto; }
+.sx-foot kbd { margin-right: 4px; }
+.sx-foot > span { display: inline-flex; align-items: center; }
