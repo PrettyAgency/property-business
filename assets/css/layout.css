@@ -1546,3 +1546,18 @@ body.nav-open .to-top-fab { opacity: 0; visibility: hidden; }
   .lib-grid { grid-template-columns: 1fr; }
   .lib-group-num { font-size: 34px; }
 }
+
+/* ---- Footer Facebook button: clean hover (no underline / bold jump) ---- */
+footer #social-list a,
+footer #social-list a:hover,
+footer #social-list a:focus {
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  color: #fff;
+}
+footer #social-list a { transition: background-color .25s ease, border-color .25s ease, transform .25s ease; }
+footer #social-list a:hover,
+footer #social-list a:focus { background: rgba(24,119,242,.16); border-color: #1877f2; transform: translateY(-1px); }
+footer #social-list .fa-facebook { transition: background-color .25s ease, color .25s ease; }
+footer #social-list a:hover .fa-facebook,
+footer #social-list a:focus .fa-facebook { background: #1877f2; color: #fff; }
