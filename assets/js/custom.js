@@ -272,3 +272,42 @@ $(document).ready(function(e) {
     window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
   });
 })();
+
+// ======= Resource library: filter chips + search =========================
+(function () {
+  var lib = document.querySelector('.lib');
+  if (!lib) return;
+  var chips = lib.querySelectorAll('.lib-chip');
+  var groups = lib.querySelectorAll('.lib-group');
+  var input = lib.querySelector('.lib-search input');
+  var empty = lib.querySelector('.lib-empty');
+  var filter = 'all';
+  function apply() {
+    var q = (input.value || '').trim().toLowerCase();
+    var shown = 0;
+    Array.prototype.forEach.call(groups, function (g) {
+      var inCat = filter === 'all' || g.getAttribute('data-cat') === filter;
+      var n = 0;
+      Array.prototype.forEach.call(g.querySelectorAll('.lib-item'), function (it) {
+        var ok = inCat && (!q || it.getAttribute('data-search').indexOf(q) !== -1);
+        it.hidden = !ok;
+        if (ok) n++;
+      });
+      g.hidden = n === 0;
+      shown += n;
+    });
+    empty.hidden = shown !== 0;
+  }
+  Array.prototype.forEach.call(chips, function (c) {
+    c.addEventListener('click', function () {
+      filter = c.getAttribute('data-filter');
+      Array.prototype.forEach.call(chips, function (o) {
+        var on = o === c;
+        o.classList.toggle('is-active', on);
+        o.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      apply();
+    });
+  });
+  input.addEventListener('input', apply);
+})();

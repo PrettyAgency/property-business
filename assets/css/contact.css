@@ -226,3 +226,16 @@
   .contact-page .cp-form-card { padding: 24px 18px; }
   .cp-jf .cp-row { grid-template-columns: 1fr; }
 }
+
+/* ---- Contact page: short banner ---- */
+.page-contact .page-hero { min-height: 0; }
+.page-contact .page-hero-inner { padding: 30px 20px 28px; }
+.page-contact .page-hero-inner::after { top: 18px; height: 60px; }
+.page-contact .crumbs { margin-bottom: 12px; }
+.page-contact .page-hero h1 { font-size: clamp(26px, 2.8vw, 36px); }
+.page-contact .page-hero h1::after { margin-top: 12px; width: 44px; }
+.page-contact .contact-page { padding-top: 56px; }
+@media (max-width: 641px) {
+  .page-contact .page-hero-inner { padding: 24px 16px 22px; }
+  .page-contact .contact-page { padding-top: 40px; }
+}
