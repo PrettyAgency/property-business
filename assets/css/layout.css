@@ -1832,3 +1832,28 @@ body.sx-open { overflow: hidden; }
 .sx .sx-close:hover,
 .sx .sx-close:focus-visible { background: var(--pb-ink); color: #fff; transform: rotate(90deg); }
 .sx .sx-close svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
+
+/* ---- Header v3: bigger logo at the same height; slimmer bar once scrolled ---- */
+.sh-logo img { transition: height .3s ease, max-width .3s ease; }
+@media (min-width: 1200px) {
+  .sh-logo img { height: 64px; }
+  .site-header.is-stuck { --pb-nav-h: 60px; }
+  .site-header.is-stuck .sh-logo img { height: 46px; }
+  .site-header.is-stuck .sh-cta { height: 38px; }
+  .site-header.is-stuck .sh-search { width: 36px !important; height: 36px !important; }
+  .site-header.is-stuck .sh-phone svg { padding: 8px; }
+}
+@media (min-width: 1200px) and (max-width: 1359px) {
+  .sh-logo img { height: 58px; }
+  .site-header.is-stuck .sh-logo img { height: 42px; }
+}
+@media (max-width: 1199px) {
+  .sh-inner { transition: height .3s ease; }
+  .sh-logo img { height: 50px; max-width: 46vw; }
+  .site-header.is-stuck .sh-inner { height: 56px; }
+  .site-header.is-stuck .sh-logo img { height: 38px; }
+}
+@media (max-width: 420px) {
+  .sh-logo img { height: 42px; max-width: 34vw; }
+  .site-header.is-stuck .sh-logo img { height: 34px; }
+}
