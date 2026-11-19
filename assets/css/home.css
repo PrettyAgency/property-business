@@ -857,3 +857,23 @@
   .page-home .slider .slick-prev { left: 14px; }
   .page-home .slider .slick-next { right: 14px; }
 }
+
+/* ---- Hero: bright photo, dark glow only behind the text ---- */
+.page-home .slider li::before { background: none !important; }
+.page-home .slider-caption { isolation: isolate; }
+.page-home .slider-caption::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -90px -140px -90px -160px;
+  background: radial-gradient(ellipse at 42% 50%, rgba(10,11,14,.72) 0%, rgba(10,11,14,.5) 38%, rgba(10,11,14,.18) 62%, rgba(10,11,14,0) 75%);
+  pointer-events: none;
+}
+.page-home .slider-caption h2,
+.page-home .slider-caption span.heading-sub { text-shadow: 0 2px 20px rgba(0,0,0,.35); }
+@media (max-width: 979px) {
+  .page-home .slider-caption::before {
+    inset: -70px -10px;
+    background: radial-gradient(ellipse at 50% 50%, rgba(10,11,14,.7) 0%, rgba(10,11,14,.45) 45%, rgba(10,11,14,0) 75%);
+  }
+}
