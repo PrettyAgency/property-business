@@ -940,3 +940,22 @@
       linear-gradient(90deg, rgba(10,11,14,.35) 0%, rgba(10,11,14,.1) 100%) !important;
   }
 }
+
+/* ---- Hero overlay v4: even tint over the whole photo + darker fade behind the text ---- */
+.page-home .slider li::before {
+  background:
+    linear-gradient(90deg,
+      rgba(10,11,14,.55) 0%,
+      rgba(10,11,14,.45) 25%,
+      rgba(10,11,14,.25) 45%,
+      rgba(10,11,14,.08) 62%,
+      rgba(10,11,14,0) 75%),
+    rgba(10,11,14,.30) !important;
+}
+@media (max-width: 979px) {
+  .page-home .slider li::before {
+    background:
+      linear-gradient(0deg, rgba(10,11,14,.45) 0%, rgba(10,11,14,.15) 50%, rgba(10,11,14,0) 100%),
+      rgba(10,11,14,.35) !important;
+  }
+}
