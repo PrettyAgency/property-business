@@ -216,14 +216,14 @@ footer :focus-visible { outline: 2px solid var(--pb-red); outline-offset: 3px; }
 .sh-drawer-head, .sh-drawer-foot { display: none; }
 .sh-overlay { display: none; }
 
-@media (min-width: 1024px) and (max-width: 1199px) {
+@media (min-width: 1200px) and (max-width: 1199px) {
   .sh-menu { gap: 22px; }
   .sh-menu > li > a, .sh-sub-toggle { font-size: 12.5px; letter-spacing: .04em; }
   .site-header.is-stuck .sh-mini-cta { display: none; }
 }
 
 /* ================= MOBILE / TABLET HEADER ================= */
-@media (max-width: 1023px) {
+@media (max-width: 1199px) {
   :root { --pb-top-h: 68px; }
 
   .site-header { top: 0; box-shadow: 0 1px 0 var(--pb-line); transition: box-shadow .3s ease; }
@@ -607,7 +607,7 @@ footer a.read-more:hover { background: none; color: #fff; filter: none; }
 .sh-menu { gap: clamp(18px, 2.2vw, 40px); }
 .sh-menu > li > a,
 .sh-sub-toggle { white-space: nowrap; }
-@media (min-width: 1024px) and (max-width: 1199px) {
+@media (min-width: 1200px) and (max-width: 1199px) {
   .sh-menu { gap: 18px; }
   .site-header.is-stuck .sh-mini-logo { margin-right: 16px; }
 }
@@ -628,7 +628,7 @@ footer a.read-more:hover { background: none; color: #fff; filter: none; }
 .copyright li.credit a:hover { color: #fff; }
 
 /* ---- Mobile drawer fix: theme's *{margin:0 auto} made every drawer block shrink & centre ---- */
-@media (max-width: 1023px) {
+@media (max-width: 1199px) {
   .sh-nav > *,
   .sh-nav-inner > *,
   .sh-menu > li,
@@ -645,7 +645,7 @@ footer a.read-more:hover { background: none; color: #fff; filter: none; }
 }
 
 /* ---- Burger: no circle, dark lines (red on hover) ---- */
-@media (max-width: 1023px) {
+@media (max-width: 1199px) {
   .site-header .sh-burger,
   .site-header .sh-burger:hover,
   .site-header .sh-burger:focus { background: transparent !important; border-radius: 0 !important; width: 40px !important; }
@@ -1561,3 +1561,57 @@ footer #social-list a:focus { background: rgba(24,119,242,.16); border-color: #1
 footer #social-list .fa-facebook { transition: background-color .25s ease, color .25s ease; }
 footer #social-list a:hover .fa-facebook,
 footer #social-list a:focus .fa-facebook { background: #1877f2; color: #fff; }
+
+/* ================= HEADER v2: ONE ROW, FULL WIDTH (desktop >= 1200px) =================
+   Logo | menu (centred in the free space) | phone | Get in Touch.
+   Below 1200px the burger/drawer header takes over, so nothing can collide. */
+@media (min-width: 1200px) {
+  :root { --pb-nav-h: 84px; }
+  .site-header {
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    height: var(--pb-nav-h);
+    padding: 0 clamp(20px, 3vw, 48px);
+    border-bottom: 1px solid var(--pb-line);
+    transition: height .3s ease, box-shadow .3s ease;
+  }
+  .site-header.is-stuck { --pb-nav-h: 70px; box-shadow: 0 8px 24px rgba(20,22,28,.08); }
+  .sh-top, .sh-inner { display: contents; }
+
+  .sh-logo { order: 1; flex: 0 0 auto; }
+  .sh-logo img { height: 52px; transition: height .3s ease; }
+  .site-header.is-stuck .sh-logo img { height: 44px; }
+
+  .sh-nav { order: 2; flex: 1 1 auto; min-width: 0; background: none; border: 0; box-shadow: none !important; }
+  .site-header.is-stuck .sh-nav { box-shadow: none; }
+  .sh-nav-inner { height: auto; max-width: none; margin: 0; padding: 0; justify-content: center; }
+  .sh-mini-logo, .sh-mini-cta { display: none !important; }
+  .sh-menu { flex: 0 1 auto; gap: 26px; }
+  .sh-menu > li > a, .sh-sub-toggle { height: var(--pb-nav-h); font-size: 13px; letter-spacing: .05em; transition: color .2s ease, height .3s ease; }
+  .sh-menu > li > a::after, .sh-sub-toggle::after { bottom: calc(var(--pb-nav-h) / 2 - 18px); }
+
+  .sh-phone { order: 3; flex: 0 0 auto; margin-left: 0; font-size: 16px; }
+  .sh-phone span { display: none; }            /* icon only until there is room for the number */
+  .sh-cta { order: 4; flex: 0 0 auto; height: 44px; padding: 0 22px; }
+  .site-header.is-stuck .sh-cta { height: 40px; }
+}
+/* Tighter menu between 1200 and 1359px */
+@media (min-width: 1200px) and (max-width: 1359px) {
+  .site-header { gap: 20px; }
+  .sh-logo img { height: 46px; }
+  .site-header.is-stuck .sh-logo img { height: 40px; }
+  .sh-menu { gap: 18px; }
+  .sh-menu > li > a, .sh-sub-toggle { font-size: 12.5px; letter-spacing: .03em; }
+  .sh-cta { padding: 0 18px; font-size: 13px; }
+}
+/* Wide screens: show the phone number next to its icon */
+@media (min-width: 1580px) {
+  .sh-phone span { display: inline; }
+  .sh-menu { gap: 34px; }
+}
+@media (min-width: 1200px) and (max-width: 1359px) {
+  .sh-menu { gap: 15px; }
+  .sh-menu > li > a, .sh-sub-toggle { font-size: 12px; letter-spacing: .02em; }
+}

@@ -130,7 +130,7 @@ $(document).ready(function(e) {
   // Floating state: set once the top row has scrolled away
   function onScroll() {
     var topRow = header.querySelector('.sh-top');
-    var limit = window.innerWidth >= 1024 ? topRow.offsetHeight : 4;
+    var limit = 4;
     header.classList.toggle('is-stuck', window.pageYOffset > limit);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -151,10 +151,10 @@ $(document).ready(function(e) {
     if (e.key === 'Escape' && body.classList.contains('nav-open')) setOpen(false);
   });
   nav.addEventListener('click', function (e) {
-    if (e.target.closest('a[href]') && window.innerWidth < 1024) setOpen(false);
+    if (e.target.closest('a[href]') && window.innerWidth < 1200) setOpen(false);
   });
   window.addEventListener('resize', function () {
-    if (window.innerWidth >= 1024 && body.classList.contains('nav-open')) setOpen(false);
+    if (window.innerWidth >= 1200 && body.classList.contains('nav-open')) setOpen(false);
   });
 
   // Features sub-menu (click to toggle; hover also works on desktop)
@@ -167,7 +167,7 @@ $(document).ready(function(e) {
     });
   });
   document.addEventListener('click', function (e) {
-    if (window.innerWidth >= 1024 && !e.target.closest('.has-sub')) {
+    if (window.innerWidth >= 1200 && !e.target.closest('.has-sub')) {
       Array.prototype.forEach.call(header.querySelectorAll('.has-sub.open'), function (li) {
         li.classList.remove('open');
         li.querySelector('.sh-sub-toggle').setAttribute('aria-expanded', 'false');
