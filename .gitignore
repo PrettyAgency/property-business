@@ -30,3 +30,6 @@ download-assets.sh
 
 # IIS (Windows hosting) config - not used, kept locally only
 web.config
+
+# Project notes - kept locally only
+README.md
