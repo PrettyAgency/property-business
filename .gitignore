@@ -1,6 +1,25 @@
+# Dependencies / system files
 node_modules/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Secrets and local settings
 .env
 .claude/settings.local.json
+
+# Editors
+.vscode/
+.idea/
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Office lock files (created when a .docx/.doc in assets/downloads is open)
+~$*
+
+# Hosting tool folders (if you deploy with their CLIs)
+.netlify/
+.vercel/
+.wrangler/
