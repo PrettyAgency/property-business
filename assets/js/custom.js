@@ -230,3 +230,18 @@ $(document).ready(function(e) {
   window.addEventListener('resize', update);
   update();
 })();
+
+// ======= Active menu item (works with relative links / any base folder) ===
+(function () {
+  function norm(p) { try { p = decodeURIComponent(p); } catch (e) {} return p.replace(/index\.html$/, '').replace(/\/+$/, '').toLowerCase(); }
+  var here = norm(location.pathname);
+  var home = norm(document.querySelector('.sh-logo') ? document.querySelector('.sh-logo').pathname : '/');
+  Array.prototype.forEach.call(document.querySelectorAll('.sh-menu a[href]'), function (a) {
+    var p = norm(a.pathname);
+    if (!p || p === home) return;
+    if (here === p || here.indexOf(p + '/') === 0) {
+      var li = a.closest('li'); if (li) li.classList.add('selected');
+      var parent = li && li.parentNode.closest('li.has-sub'); if (parent) parent.classList.add('selected');
+    }
+  });
+})();
