@@ -311,3 +311,23 @@ $(document).ready(function(e) {
   });
   input.addEventListener('input', apply);
 })();
+
+// ======= Re-measure sliders once the page has fully laid out =============
+// Slick measures width at start-up; if the scrollbar or fonts appear later the
+// fading hero slides end up shifted, leaving a dark strip down the left edge.
+(function ($) {
+  if (!$ || !$.fn.getSlick) return;
+  function refresh() {
+    $('.home-slider.slick-initialized, .testimonal.slick-initialized').each(function () {
+      var s = $(this).getSlick();
+      if (s && s.setPosition) s.setPosition();
+    });
+  }
+  $(window).on('load', function () { refresh(); setTimeout(refresh, 300); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+  var t; $(window).on('resize orientationchange', function () { clearTimeout(t); t = setTimeout(refresh, 150); });
+  if ('ResizeObserver' in window) {
+    var el = document.querySelector('.slider');
+    if (el) { var last = 0; new ResizeObserver(function (e) { var w = Math.round(e[0].contentRect.width); if (w !== last) { last = w; refresh(); } }).observe(el); }
+  }
+})(window.jQuery);

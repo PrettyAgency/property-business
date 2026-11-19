@@ -877,3 +877,33 @@
     background: radial-gradient(ellipse at 50% 50%, rgba(10,11,14,.7) 0%, rgba(10,11,14,.45) 45%, rgba(10,11,14,0) 75%);
   }
 }
+
+/* ---- Hero fills the screen under the header on laptop / desktop ---- */
+.page-home .slider .slick-slide { overflow: hidden; }
+@media (min-width: 1024px) {
+  .page-home .slider li img { height: max(520px, calc(100svh - 68px)); height: max(520px, calc(100vh - 68px)); height: max(520px, calc(100svh - 68px)); }
+}
+@media (min-width: 1200px) {
+  .page-home .slider li img { height: max(560px, calc(100vh - 84px)); height: max(560px, calc(100svh - 84px)); }
+  .page-home .slider-caption { top: 50%; }
+}
+
+/* ---- Hero fade: stack every slide in the same full-width cell ----
+   Slick's fade mode offsets each slide with an inline "left: -Npx" based on the
+   width it measured; if that was off by the scrollbar, a dark strip showed on the
+   left. A one-cell grid makes the layout independent of that measurement. */
+.page-home .home-slider .slick-list { width: 100%; }
+.page-home .home-slider .slick-track {
+  display: grid !important;
+  width: 100% !important;
+  transform: none !important;
+}
+.page-home .home-slider .slick-track::before,
+.page-home .home-slider .slick-track::after { content: none !important; }
+.page-home .home-slider .slick-slide {
+  grid-area: 1 / 1;
+  position: relative !important;
+  left: 0 !important;
+  width: 100% !important;
+  float: none !important;
+}
