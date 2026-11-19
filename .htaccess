@@ -1,5 +1,44 @@
+# Property Business - Apache configuration (static site)
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
+Options -Indexes
+ServerSignature Off
+AddType application/json .json
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Always use HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  # One address: propertybusiness.com.au -> www.propertybusiness.com.au
+  RewriteCond %{HTTP_HOST} ^propertybusiness\.com\.au$ [NC]
+  RewriteRule ^ https://www.propertybusiness.com.au%{REQUEST_URI} [L,R=301]
+  # Never serve repo / tooling files
+  RewriteRule (^|/)\.(git|github|vscode)(/|$) - [F,L]
+  RewriteRule \.(md|ps1|sh|bak|log|env)$ - [F,L,NC]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always unset X-Powered-By
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src https://www.googletagmanager.com https://maps.google.com https://www.google.com; form-action 'self' https://submit.jotform.com https://*.jotform.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# Old addresses from the previous site
 RedirectMatch 301 (?i)^/home/?$ /
 Redirect 301 /getattachment/0f07b8ea-e009-4f13-9704-cbbbdb56badb/Sunshine-coast-buyers-agent-live-music-venue-aura.PNG /assets/images/attachments/Sunshine-coast-buyers-agent-live-music-venue-aura.PNG
 Redirect 301 /getattachment/125ca185-a189-4040-a765-a4a5e583175e/download /assets/downloads/OperationalPlan202223.pdf
